@@ -204,7 +204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1199415758}
-        m_MethodName: changeWheelColor
+        m_MethodName: ChangeWheelColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1477,7 +1477,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1199415758}
-        m_MethodName: changeRight
+        m_MethodName: ChangeRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1914,18 +1914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d62352d65394e2418507909a7b73041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheel_Colors:
-  - {fileID: 2100000, guid: 9f4a98b730c481e48bfb54a3c6f773b1, type: 2}
-  - {fileID: 2100000, guid: 62f956c311ea88b4b8a61b16b1f6c6fe, type: 2}
-  driver_Colors:
-  - {fileID: 2100000, guid: 0381cd4404cce244d98b6692e462fe21, type: 2}
-  - {fileID: 2100000, guid: e590401dc6907d44fae5b62b053d094e, type: 2}
-  - {fileID: 2100000, guid: 5e3d1341e4b32244ca66c85c0798cb12, type: 2}
-  kart_Colors:
-  - {fileID: 2100000, guid: e11594c48a926b343b4dd6c55f745e90, type: 2}
-  - {fileID: 2100000, guid: ce9ac5d70a655ec40b4d179db4a31ac8, type: 2}
-  - {fileID: 2100000, guid: cba6e244926080242adfa9967581a8ce, type: 2}
-  - {fileID: 2100000, guid: 1969cc9340ea85b40b2438760f38c63b, type: 2}
+  wheelColors: []
+  driverColors: []
+  kartColors: []
 --- !u!4 &1199415759
 Transform:
   m_ObjectHideFlags: 0
@@ -2598,7 +2589,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1199415758}
-        m_MethodName: changeKartColor
+        m_MethodName: ChangeKartColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3386,7 +3377,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1199415758}
-        m_MethodName: changeDriverColor
+        m_MethodName: ChangeDriverColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3970,7 +3961,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1199415758}
-        m_MethodName: changeLeft
+        m_MethodName: ChangeLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

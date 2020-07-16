@@ -5,14 +5,24 @@ using UnityEditor;
 
 public class CustomKar : MonoBehaviour
 {
+    /* 
+     * Parameters to selecte the color to change 
+     * all the parts of the kart (Wheel, engine(kart), and driver)
+    */
     [Header("Wheel Colors")]
-    public Material[] wheel_Colors;
+    public Material[] wheelColors;
     [Header("Driver Colors")]
-    public Material[] driver_Colors;
+    public Material[] driverColors;
     [Header("Kart Colors")]
-    public Material[] kart_Colors;
+    public Material[] kartColors;
 
-    private GameObject kart_Display;
+    /*
+     * Private variables to get and change the part of the kart to change,
+     * the materias of the kart selected through butons,
+     * the current material that the object is displaying
+     * and a counter to to know which is the material currently selected
+    */
+    private GameObject kartDisplay;
     private GameObject[] objectsToChangeMat;
     private Material[] materialToChange;
     private Renderer objMat;
@@ -20,41 +30,66 @@ public class CustomKar : MonoBehaviour
 
     void Start()
     {
-        kart_Display = GameObject.Find("KartClassic_Player");
-        DontDestroyOnLoad(kart_Display);
+        /*
+         * This avoid that the custom kart that the user made change when the scena change
+         * avoiding the object being destroy.
+        */
+        kartDisplay = GameObject.Find("KartClassic_Player");
+        DontDestroyOnLoad(kartDisplay);
     }
 
-    public void changeWheelColor()
+    /*
+     * This method is responsable of selected all the objects that make up 
+     * the wheels, that means the 4 wheels, and assigned them to the parameter objectsToChangeMat,
+     * in case the parameter is already assigned it reset the parameter and reassign it. 
+    */
+    public void ChangeWheelColor()
     {
-        materialToChange = wheel_Colors;
+        materialToChange = wheelColors;
         objectsToChangeMat = new GameObject[4];
-        objectsToChangeMat[0] = kart_Display.transform.Find("KartWheels").transform.Find("WheelFrontLeft").gameObject;
-        objectsToChangeMat[1] = kart_Display.transform.Find("KartWheels").transform.Find("WheelFrontRight").gameObject;
-        objectsToChangeMat[2] = kart_Display.transform.Find("KartWheels").transform.Find("WheelrearLeft").gameObject;
-        objectsToChangeMat[3] = kart_Display.transform.Find("KartWheels").transform.Find("WheelsRearRight").gameObject;
+        objectsToChangeMat[0] = kartDisplay.transform.Find("KartWheels").transform.Find("WheelFrontLeft").gameObject;
+        objectsToChangeMat[1] = kartDisplay.transform.Find("KartWheels").transform.Find("WheelFrontRight").gameObject;
+        objectsToChangeMat[2] = kartDisplay.transform.Find("KartWheels").transform.Find("WheelrearLeft").gameObject;
+        objectsToChangeMat[3] = kartDisplay.transform.Find("KartWheels").transform.Find("WheelsRearRight").gameObject;
 
         currentMat = 0;
     }
 
-    public void changeDriverColor()
+    /*
+     * This method is responsable of selected all the objects that make up 
+     * the Driver, and assigned them to the parameter objectsToChangeMat,
+     * in case the parameter is already assigned it reset the parameter and reassign it. 
+    */
+
+    public void ChangeDriverColor()
     {
-        materialToChange = driver_Colors;
+        materialToChange = driverColors;
         objectsToChangeMat = new GameObject[1];
-        objectsToChangeMat[0] = kart_Display.transform.Find("KartSuspension").transform.Find("PlayerIdle").transform.Find("Template_Character").gameObject;
+        objectsToChangeMat[0] = kartDisplay.transform.Find("KartSuspension").transform.Find("PlayerIdle").transform.Find("Template_Character").gameObject;
 
         currentMat = 0;
     }
 
-    public void changeKartColor()
+    /*
+     * This method is responsable of selected all the objects that make up 
+     * the kart engine, and assigned them to the parameter objectsToChangeMat,
+     * in case the parameter is already assigned it reset the parameter and reassign it. 
+    */
+    public void ChangeKartColor()
     {
-        materialToChange = kart_Colors;
+        materialToChange = kartColors;
         objectsToChangeMat = new GameObject[1];
-        objectsToChangeMat[0] = kart_Display.transform.Find("KartSuspension").transform.Find("Kart").transform.Find("Kart_Body").gameObject;
+        objectsToChangeMat[0] = kartDisplay.transform.Find("KartSuspension").transform.Find("Kart").transform.Find("Kart_Body").gameObject;
 
         currentMat = 0;
     }
 
-    public void changeLeft()
+    /*
+     * This method is responsable of being able of select different
+     * material with the left arrow and assign the material to the
+     * objects selected.
+    */
+    public void ChangeLeft()
     {
         currentMat = currentMat - 1;
         int tempInt = Mathf.Abs(currentMat) % materialToChange.Length;
@@ -66,7 +101,12 @@ public class CustomKar : MonoBehaviour
         }
     }
 
-    public void changeRight()
+    /*
+     * This method is responsable of being able of select different
+     * material with the right arrow and assign the material to the
+     * object selected.
+    */
+    public void ChangeRight()
     {
         currentMat = currentMat + 1;
         int tempInt = Mathf.Abs(currentMat) % materialToChange.Length;

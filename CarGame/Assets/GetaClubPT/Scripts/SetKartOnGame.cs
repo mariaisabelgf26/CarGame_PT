@@ -4,36 +4,52 @@ using UnityEngine;
 
 public class SetKartOnGame : MonoBehaviour
 {
-    private GameObject kart_Player;
-    private Transform kart_Transform;
+    /*
+     * Private variables to get the kart which one the user will
+     * play and to access to the transformation parameters of this one
+    */
+    private GameObject kartPlayer;
+    private Transform kartTransform;
 
-    private GameObject cinematic_Camera;
+    /*
+     * Private variable to get the cinematic Camera that flows and track 
+     * the kartPlayer
+   */
+    private GameObject cinematicCamera;
 
     // Start is called before the first frame update
     void Start()
     {
-        kart_Player = GameObject.Find("KartClassic_Player");
-        cinematic_Camera = GameObject.Find("CinemachineVirtualCamera");
+        ResetSettingKartPlayer();
+    }
+
+    /*
+     * This method is responsible of reseting all the parameters, scripts and features
+     * that the kart has to put it in the start line and the cinematic Camera follow it. 
+    */
+    private void ResetSettingKartPlayer()
+    {
+        kartPlayer = GameObject.Find("KartClassic_Player");
+        cinematicCamera = GameObject.Find("CinemachineVirtualCamera");
 
         //Reset Camera to follow custom kart
-        cinematic_Camera.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = kart_Player.transform;
-        cinematic_Camera.GetComponent<Cinemachine.CinemachineVirtualCamera>().LookAt = kart_Player.transform;
+        cinematicCamera.GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = kartPlayer.transform;
+        cinematicCamera.GetComponent<Cinemachine.CinemachineVirtualCamera>().LookAt = kartPlayer.transform;
 
         // Reset Scripts
-
-        kart_Player.GetComponent<Rigidbody>().useGravity = true;
-        kart_Player.GetComponent<KartGame.KartSystems.ArcadeKart>().enabled = true;
-        kart_Player.GetComponent<KartGame.KartSystems.KartPlayerAnimator>().enabled = true;
-        kart_Player.GetComponent<KartGame.KartSystems.KartAnimation>().enabled = true;
-        kart_Player.GetComponent<KartGame.KartSystems.KartBounce>().enabled = true;
-        kart_Player.GetComponent<RotateOnAxis>().enabled = false;
+        kartPlayer.GetComponent<Rigidbody>().useGravity = true;
+        kartPlayer.GetComponent<KartGame.KartSystems.ArcadeKart>().enabled = true;
+        kartPlayer.GetComponent<KartGame.KartSystems.KartPlayerAnimator>().enabled = true;
+        kartPlayer.GetComponent<KartGame.KartSystems.KartAnimation>().enabled = true;
+        kartPlayer.GetComponent<KartGame.KartSystems.KartBounce>().enabled = true;
+        kartPlayer.GetComponent<RotateOnAxis>().enabled = false;
 
         // Reset Position
-        kart_Transform = kart_Player.GetComponent<Transform>();
-        kart_Transform.position = new Vector3(15.94f, 1.01f, 1.5f);
-        kart_Transform.rotation = Quaternion.Euler(0, 0, 0);
-        kart_Transform.localScale = new Vector3(1, 1, 1);
-        kart_Player.SetActive(false);
-        kart_Player.SetActive(true);
+        kartTransform = kartPlayer.GetComponent<Transform>();
+        kartTransform.position = new Vector3(15.94f, 1.01f, 1.5f);
+        kartTransform.rotation = Quaternion.Euler(0, 0, 0);
+        kartTransform.localScale = new Vector3(1, 1, 1);
+        kartPlayer.SetActive(false);
+        kartPlayer.SetActive(true);
     }
 }
